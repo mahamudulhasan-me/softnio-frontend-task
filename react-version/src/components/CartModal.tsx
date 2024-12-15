@@ -1,46 +1,59 @@
 import React, { useState } from "react";
+import { ICart } from "../App";
 
-// A mock cart array for demonstration
-const initialCart = [
-  {
-    name: "Classy Modern Smart Watch",
-    image: "/assets/product-gallery.png",
-    color: "violet",
-    size: "M",
-    price: 79.0,
-    quantity: 2,
-  },
-  {
-    name: "Elegant Watch",
-    image: "/assets/product-gallery.png",
-    color: "cyan",
-    size: "L",
-    price: 69.0,
-    quantity: 1,
-  },
-];
+type CartModalProps = {
+  cartDetails: ICart[];
+  handleRemoveFromCart: (index: number) => void;
+};
 
-const CartModal: React.FC = () => {
+const CartModal: React.FC<CartModalProps> = ({
+  cartDetails,
+  handleRemoveFromCart,
+}: CartModalProps) => {
   // State for cart items and the modal visibility
-  const [cart, setCart] = useState(initialCart);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Calculate total quantity and total price
-  const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
-  const totalPrice = cart.reduce(
+  const totalQuantity = cartDetails.reduce(
+    (acc, item) => acc + item.quantity,
+    0
+  );
+  const totalPrice = cartDetails.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
   // Remove an item from the cart
-  const removeItem = (index: number) => {
-    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+  const handleRemoveItem = (index: number) => {
+    handleRemoveFromCart(index);
   };
 
   return (
     <>
+      <button
+        id="checkout-btn"
+        onClick={() => setIsModalVisible(true)}
+        className={`fixed bottom-1/2 right-5 bg-blue-600 text-white p-4 rounded-full shadow-lg ${
+          cartDetails.length === 0 ? "hidden" : ""
+        } flex items-center gap-1 shadow-2xl`}
+      >
+        <svg
+          viewBox="0 0 16 16"
+          className="bi bi-cart-check"
+          height="24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#fff"
+        >
+          <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"></path>
+          <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+        </svg>
+        <span id="cart-count" className="ml-1 font-semibold">
+          {cartDetails?.length}
+        </span>
+      </button>
       {/* Modal for Cart */}
-      {isModalVisible && (
+      {isModalVisible && cartDetails?.length !== 0 && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 flex items-center justify-center">
           <div className="bg-white p-5 rounded-2xl md:w-[600px]">
             <h3 className="font-[500] text-xl mb-4 text-gray-700">Your Cart</h3>
@@ -66,7 +79,7 @@ const CartModal: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {cart.map((item, index) => (
+                {cartDetails?.map((item, index) => (
                   <tr key={index} className="border-b">
                     <td className="py-3 text-sm text-gray-700">
                       <div className="flex items-center gap-2">
@@ -92,7 +105,7 @@ const CartModal: React.FC = () => {
                     </td>
                     <td className="text-right">
                       <button
-                        onClick={() => removeItem(index)}
+                        onClick={() => handleRemoveItem(index)}
                         className="text-red-500 remove-item"
                       >
                         &#10005;
@@ -101,21 +114,21 @@ const CartModal: React.FC = () => {
                   </tr>
                 ))}
               </tbody>
+              <tr>
+                <td colSpan={3} className="pt-5 font-bold text-gray-700">
+                  Total
+                </td>
+                <td className="text-center pt-5 font-bold text-gray-700">
+                  {totalQuantity}
+                </td>
+                <td className="text-right pt-5 font-bold text-gray-700">
+                  ${totalPrice.toFixed(2)}
+                </td>
+                <td></td>
+              </tr>
             </table>
 
             {/* Total Row */}
-            <tr>
-              <td colSpan={3} className="pt-5 font-bold text-gray-700">
-                Total
-              </td>
-              <td className="text-center pt-5 font-bold text-gray-700">
-                {totalQuantity}
-              </td>
-              <td className="text-right pt-5 font-bold text-gray-700">
-                ${totalPrice.toFixed(2)}
-              </td>
-              <td></td>
-            </tr>
 
             {/* Buttons */}
             <div className="flex items-center justify-end gap-x-4 mt-5">

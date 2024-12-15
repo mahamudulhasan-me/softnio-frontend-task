@@ -75,4 +75,4 @@ This repository contains the implementation of the **Softnio Frontend Task**. It
    ```bash
    npm start
    ```
-4. Visit `http://localhost:3000` to view the React application.
+4. Visit `http://localhost:5174/` to view the React application.
