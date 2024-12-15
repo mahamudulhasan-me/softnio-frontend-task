@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Product Page</title>
+  </head>
+  <body>
+    <main
+      class="container mx-auto h-screen max-w-[1000px] flex justify-center items-center"
+    >
+      <section class="grid md:grid-cols-2 gap-x-10 items-center p-2">
+        <!-- Image Display Section -->
+        <figure class="w-full h-full">
+          <img
+            id="product-image"
+            src="./assets/product-gallery.png"
+            alt="Selected Band Color - Violet"
+          />
+        </figure>
+
+        <!-- Product Details -->
+        <section class="flex flex-col mt-4 md:mt-0">
+          <!-- Product Name -->
+          <header>
+            <h1
+              id="product-name"
+              class="md:text-4xl text-2xl font-semibold text-gray-700"
+            >
+              Classy Modern Smart Watch
+            </h1>
+            <!-- Product Rating -->
+            <p class="flex text-xl text-orange-500 items-center gap-x-0.5">
+              <span>★</span><span>★</span><span>★</span><span>★</span
+              ><span>☆</span>
+              <span class="text-gray-500 text-sm ml-1">4.0 (2 Reviews)</span>
+            </p>
+          </header>
+
+          <!-- Pricing Section -->
+          <section class="my-4">
+            <p>
+              <span class="line-through md:text-xl text-gray-500">$99.00</span>
+              <span class="md:text-2xl text-xl text-blue-600 font-[500]"
+                >$79.00</span
+              >
+            </p>
+          </section>
+
+          <!-- Product Description -->
+          <article class="text-gray-600 md:text-base text-sm">
+            I must explain to you how all this mistaken idea of denoun cing
+            pleasure praising pain was born and I will give you a complete
+            account of the system, and expound the actual teaching.
+          </article>
+
+          <!-- Product Metadata -->
+          <section class="flex items-center gap-x-10 my-4">
+            <dl class="flex flex-col">
+              <dt class="text-sm text-gray-500">Type</dt>
+              <dd class="font-[500] text-gray-700">Watch</dd>
+            </dl>
+            <dl class="flex flex-col">
+              <dt class="text-sm text-gray-500">Model Number</dt>
+              <dd class="font-[500] text-gray-700">Forerunner 290XT</dd>
+            </dl>
+          </section>
+
+          <!-- Band Colors Section -->
+          <section>
+            <h2 class="md:text-lg font-[500] text-gray-700 mb-1">Band Color</h2>
+            <ul class="flex items-center gap-2">
+              <li>
+                <button
+                  class="w-5 h-5 rounded-full border-2 border-white bg-violet-700"
+                  data-color="violet"
+                  id="color-violet"
+                ></button>
+              </li>
+              <li>
+                <button
+                  class="w-5 h-5 rounded-full border-2 border-white bg-[#1FCEC9]"
+                  data-color="cyan"
+                  id="color-cyan"
+                ></button>
+              </li>
+              <li>
+                <button
+                  class="w-5 h-5 rounded-full border-2 border-white bg-blue-500"
+                  data-color="skyblue"
+                  id="color-skyblue"
+                ></button>
+              </li>
+              <li>
+                <button
+                  class="w-5 h-5 rounded-full border-2 border-white bg-gray-800"
+                  data-color="black"
+                  id="color-black"
+                ></button>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Wrist Size -->
+          <section class="my-4">
+            <h2 class="text-lg font-[500] text-gray-700 mb-1">Wrist Size</h2>
+            <ul class="flex items-center gap-x-4 flex-wrap">
+              <li>
+                <button
+                  id="size-s"
+                  class="size-btn border border-blue-600 md:px-4 px-2 py-1 rounded-md text-slate-500 transition-all duration-300 text-sm md:text-base"
+                >
+                  <span class="font-[500] text-blue-600 mr-1 md:text-lg"
+                    >S</span
+                  >
+                  $69
+                </button>
+              </li>
+              <li>
+                <button
+                  id="size-m"
+                  class="size-btn border border-blue-200 md:px-4 px-2 py-1 rounded-md hover:border-blue-600 hover:text-blue-600 transition-all duration-300 text-slate-500 hover:bg-slate-50 text-sm md:text-base"
+                >
+                  <span class="font-[500] text-gray-700 mr-1 md:text-lg"
+                    >M</span
+                  >
+                  $69
+                </button>
+              </li>
+              <li>
+                <button
+                  id="size-l"
+                  class="size-btn border border-blue-200 md:px-4 px-2 py-1 rounded-md hover:border-blue-600 hover:text-blue-600 transition-all duration-300 text-slate-500 hover:bg-slate-50 text-sm md:text-base"
+                >
+                  <span class="font-[500] text-gray-700 mr-1 md:text-lg"
+                    >L</span
+                  >
+                  $89
+                </button>
+              </li>
+              <li>
+                <button
+                  id="size-xl"
+                  class="size-btn border border-blue-200 md:px-4 px-2 py-1 rounded-md hover:border-blue-600 hover:text-blue-600 transition-all duration-300 text-slate-500 hover:bg-slate-50 text-sm md:text-base"
+                >
+                  <span class="font-[500] text-gray-700 mr-1 md:text-lg"
+                    >XL</span
+                  >
+                  $99
+                </button>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Quantity and Actions -->
+          <footer class="flex items-center gap-x-4">
+            <!-- Quantity Control -->
+            <div
+              class="border w-fit border-gray-300 flex items-center rounded-md"
+            >
+              <button
+                id="minus-btn"
+                class="md:size-10 size-8 border-r border-gray-300 md:text-4xl text-2xl text-gray-500 flex justify-center items-center"
+              >
+                &#8722;
+              </button>
+              <p
+                id="quantity-display"
+                class="md:w-16 w-12 text-center text-gray-700"
+              >
+                1
+              </p>
+              <button
+                id="plus-btn"
+                class="md:size-10 size-8 border-l border-gray-300 md:text-3xl text-2xl text-gray-500 flex justify-center items-center"
+              >
+                &#43;
+              </button>
+            </div>
+
+            <!-- Add to Cart Button -->
+            <button
+              class="bg-blue-600 text-white md:px-5 px-4 md:py-2 py-1.5 rounded-md font-[500]"
+            >
+              Add to Cart
+            </button>
+
+            <!-- Wishlist Button -->
+            <button
+              id="wishlist-btn"
+              aria-label="Add to Wishlist"
+              class="text-4xl text-blue-600"
+            >
+              &#9825;
+            </button>
+          </footer>
+        </section>
+      </section>
+      <!-- Floating Checkout Button (initially hidden) -->
+      <button
+        id="checkout-btn"
+        class="fixed bottom-1/2 right-5 bg-blue-600 text-white p-4 rounded-full shadow-lg hidden flex items-center gap-1 shadow-2xl"
+      >
+        <svg
+          viewBox="0 0 16 16"
+          class="bi bi-cart-check"
+          height="24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#fff"
+          c
+        >
+          <path
+            d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+          ></path>
+          <path
+            d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+          ></path>
+        </svg>
+        <span id="cart-count" class="ml-1 font-semibold">0</span>
+      </button>
+
+      <!-- Cart Preview Modal -->
+      <div
+        id="cart-modal"
+        class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 flex items-center justify-center hidden"
+      >
+        <div class="bg-white p-5 rounded-2xl md:w-[600px]">
+          <h3 class="font-[500] text-xl mb-4 text-gray-700">Your Cart</h3>
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b text-gray-500 text-sm font-[400]">
+                <th class="py-2 md:min-w-48 min-w-20">Item</th>
+                <th class="py-2 text-center md:min-w-16 min-w-10">Color</th>
+                <th class="py-2 text-center md:min-w-16 min-w-10">Size</th>
+                <th class="py-2 text-center md:min-w-16 min-w-10">Quantity</th>
+                <th class="py-2 text-right md:min-w-16 min-w-10">Price</th>
+                <th class="md:min-w-10"></th>
+              </tr>
+            </thead>
+            <tbody id="cart-items">
+              <!-- Dynamically filled with cart items -->
+            </tbody>
+          </table>
+          <!-- Close Modal Buttons -->
+          <div class="flex items-center justify-end gap-x-4 mt-5">
+            <button
+              id="close-modal"
+              class="bg-white border border-gray-400 text-gray-800 py-2 px-4 rounded-md text-xs font-[500] hover:bg-blue-50 transition-all duration-300"
+            >
+              Continue Shopping
+            </button>
+            <button
+              id="checkout-button"
+              class="bg-blue-600 border border-gray-400 text-white py-2 px-4 rounded-md text-xs font-[500] hover:bg-blue-700 transition-all duration-300"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
